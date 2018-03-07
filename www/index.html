@@ -80,6 +80,15 @@
                     success: function (response) {
                         mensaje = "Bienvenido usuario " + response.id_usuario;
                         $("#bienvenida").html(mensaje);
+                        function alertDismissed() {
+    // do something
+}
+                        navigator.notification.alert(
+     mensaje,  // message
+    alertDismissed,         // callback
+    'Bienvenida',            // title
+    'Hecho'                  // buttonName
+);
                         if (response.resultado_login == true) {
                             getCanchas();
                             sessionStorage.removeItem('IdUsuario');
@@ -87,6 +96,15 @@
                            goool();
                         } else {
                             $("#mensajeLogin").html("Debe ingresar datos validos");
+                              function alertDismissed() {
+    // do something
+}
+                        navigator.notification.alert(
+    "Debe ingresar datos validos",  // message
+    alertDismissed,         // callback
+    'Datos Invalidos',            // title
+    'Hecho'                  // buttonName
+);
                             $("#formSignIn")[0].reset();
                             $("#popupLogin").popup("close");
                         }
@@ -97,6 +115,13 @@
                 });
                  }else{
                     $("#popupLogin").popup("close");
+                     
+                       navigator.notification.alert(
+    "Debe ingresar datos validos",  // message
+    alertDismissed,         // callback
+    'Datos Invalidos',            // title
+    'Hecho'                  // buttonName
+);
                      $("#mensajeLogin").html("Debe ingresar datos validos");
                  }
             }
@@ -132,11 +157,29 @@
                             if (response.retorno == "OK") {
                                 mensaje = "Bienvenido usuario " + response. idUsuario;
                                 $("#bienvenida").html(mensaje);
-
+ function alertDismissed() {
+    // do something
+}
+                        navigator.notification.alert(
+     mensaje,  // message
+    alertDismissed,         // callback
+    'Bienvenida',            // title
+    'Hecho'                  // buttonName
+);
                                 getCanchas();
                                 sessionStorage.removeItem('IdUsuario');
                                 sessionStorage.setItem('IdUsuario', response. idUsuario);
                             } else {
+                                
+                                function alertDismissed() {
+    // do something
+}
+                        navigator.notification.alert(
+    "Debe ingresar datos validos",  // message
+    alertDismissed,         // callback
+    'Datos Invalidos',            // title
+    'Hecho'                  // buttonName
+);
                                 $("#mensajeLogin").html("Debe ingresar datos validos");
                                 $("#formSignUp")[0].reset();
                                 $("#popupSignUp").popup("close");
@@ -149,6 +192,15 @@
                         }
                     });
                 }else{  
+                     function alertDismissed() {
+    // do something
+}
+                        navigator.notification.alert(
+    "Debe ingresar datos validos",  // message
+    alertDismissed,         // callback
+    'Datos Invalidos',            // title
+    'Hecho'                  // buttonName
+);
                     $("#mensajeLogin").html("Debe ingresar datos validos");
                      $("#popupSignUp").popup("close");
                      }
@@ -234,9 +286,10 @@
             
            function goool()
             {
-                var my_media;
+                var  my_media = document.getElementById('audioGool');
            
               my_media = new Media('Phone\Download\AdministradorCanchas\Gool.mp3');
+                
                 my_media.play();
             
             }
@@ -397,7 +450,16 @@ checkConnection();
                             },
                             success: function (response) {
                             mensaje = "Usted a creado el partido numero " + response.idPartido+ " con el nombre " + nomPartido+ " ."
-                                    $("#mensajeGeneral").html(mensaje);
+                                    
+                                 function alertDismissed() {
+    // do something
+}
+                        navigator.notification.alert(
+     mensaje,  // message
+    alertDismissed,         // callback
+    'Hay Partido',            // title
+    'Hecho'                  // buttonName
+);
                                    
                            window.location.href = "#canchas";
                            navigator.notification.beep(2);
@@ -411,6 +473,15 @@ checkConnection();
 							});
 							}
 							else{
+                                  function alertDismissed() {
+    // do something
+}
+                        navigator.notification.alert(
+    "Debe ingresar datos validos",  // message
+    alertDismissed,         // callback
+    'Datos Invalidos',            // title
+    'Hecho'                  // buttonName
+);
 							$("#mensajeCrear").html("Debe ingresar datos validos");
                                     
                     
@@ -666,14 +737,34 @@ checkConnection();
                                 idPartido: $("#selectPartidosDeCancha").val(),
                         },
                         success: function (response) {
+                           
                                mensaje ="Usted se a inscripto al partido numero "+$("#selectPartidosDeCancha").val()+" correctamente";
-                               $("#mensajeGeneral").html(mensaje);
+                             function alertDismissed() {
+    // do something
+}
+                        navigator.notification.alert(
+     mensaje,  // message
+    alertDismissed,         // callback
+    'Estoy Adentro',            // title
+    'Hecho'                  // buttonName
+);
+                              
                                 
+                            
 								 window.location.href = "#canchas";
                                  navigator.notification.beep(2);
                         },
                         error: function (err) {
 						mensaje = "La inscripcion al partido numero "+$("#selectPartidosDeCancha").val()+" NO se realizo";
+                             function alertDismissed() {
+    // do something
+}
+                        navigator.notification.alert(
+     mensaje,  // message
+    alertDismissed,         // callback
+    'Error',            // title
+    'Hecho'                  // buttonName
+);
                             $("#mensajeGeneral").html(mensaje);
                             console.log("error! -> " + err);
                         }
@@ -854,7 +945,7 @@ function onFailF(message) {
                       data-transition="slideup"
                       class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-gear ui-btn-icon-left ui-btn-a" onclick="limpiar()">MENU</a>
                 <div data-role="popup" id="popupMenu" data-theme="b">
-                            
+                    <div id="audioGool"></div>       
                     <ul data-role="listview" data-inset="true" style="min-width: 210px;">
                         <li data-role="list-divider">Menu</li>
                          <li><a href="#canchas"  >Inicio</a></li>
